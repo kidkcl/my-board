@@ -87,7 +87,7 @@ class Board extends Component {
   }
 
   handleToggleReply(id) {
-    console.log(id);
+    console.log('comment id'+id);
     let data = this.state.data;
     data[id].isReplying = !data[id].isReplying;
     this.setState({ data });
@@ -109,7 +109,7 @@ class Board extends Component {
     let data = this.state.data;
     let name = data[idx].reUserName;
     let content = data[idx].reContent;
-    fetch(`/api/${idx}/reply`, {
+    fetch(`/api/comments/${idx}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -123,14 +123,15 @@ class Board extends Component {
     .then(res => res.json())
     .then((p) => {
       const post = p;
-      post.isReplying = false;
-      post[idx].reUserName = '';
-      post[idx].reContent = '';
-      return post;
+      data[idx].reply = data[idx].reply.concat(post);
+      data[idx].isReplying = false;
+      data[idx].reUserName = '';
+      data[idx].reContent = '';
+      this.setState({ data });
     })
     .catch(err => console.log(err));
-    console.log(this.state.data[idx].reUserName);
-    this.setState({ data });
+    console.log(data[idx].reply.length);
+    return false;
   }
 
   displayBoard() {

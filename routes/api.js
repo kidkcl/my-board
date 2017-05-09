@@ -49,9 +49,12 @@ router.post('/comments', function(req, res, next) {
     res.send(newdata);
 });
 
-router.post('/:idx/reply', function(req, res, next) {
-    const idx = parseInt(req.param.idx, 10);
+router.post('/comments/:idx', function(req, res, next) {
+    const idx = parseInt(req.params.idx, 10);
+    console.log(idx);
+    console.log(req.params.idx);
     const post = req.body;
+    console.log(post);
     const date = new Date();
     const time = `${date.getFullYear()}/${date.getMonth()+1}/${date.getDate()}, ${date.getHours()}:${date.getMinutes()}`;
     const newdata = {
@@ -59,7 +62,7 @@ router.post('/:idx/reply', function(req, res, next) {
         time: time,
         content: post.content,
     };
-    data = data[idx].reply.concat(newdata);
+    data[idx].reply = data[idx].reply.concat(newdata);
     res.send(newdata);
 })
 
