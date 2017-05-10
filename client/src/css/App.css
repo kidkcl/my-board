@@ -14,8 +14,13 @@
   color: white;
 }
 
-.App-intro {
-  font-size: large;
+.board {
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  margin: 10%;
 }
 
 @keyframes App-logo-spin {

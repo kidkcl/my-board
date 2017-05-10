@@ -1,0 +1,26 @@
+.postbody {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-box-flex: initial;
+    flex: initial;
+    border: solid 1px;
+    border-color: palevioletred;
+}
+
+.postfooter {
+    -webkit-box-flex: initial;
+    flex: initial;
+}
+
+.postfooter a:hover {
+    text-decoration: underline;
+}
+.replylink {
+    padding-right: 16px;
+}
+
+.postinner1 {
+    -webkit-box-flex: 2;
+    flex: 2;
+}

@@ -4,6 +4,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const style = {
   margin: 12,
+  color: 'white',
 };
 
 function PostField(props) {
